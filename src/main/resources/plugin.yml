@@ -1,0 +1,10 @@
+name: PlayerSkulls
+author: Zeryther
+website: https://zeryther.com
+version: 1.0
+main: com.zeryther.playerskulls.PlayerSkulls
+
+commands:
+  skull:
+    description: Give yourself a player's skull
+    aliases: [head,playerskull,playerhead,ph,ps]
