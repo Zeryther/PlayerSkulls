@@ -28,19 +28,23 @@ public class PlayerSkulls extends JavaPlugin implements CommandExecutor {
             if(sender instanceof Player){
                 Player p = (Player)sender;
 
-                if(args.length == 1){
-                    String name = args[0];
+                if(p.hasPermission("playerskulls.cmd.skull")){
+                    if(args.length == 1){
+                        String name = args[0];
 
-                    ItemStack i = new ItemStack(Material.SKULL_ITEM);
-                    i.setDurability((short)3);
-                    SkullMeta iM = (SkullMeta)i.getItemMeta();
-                    iM.setOwner(name);
-                    i.setItemMeta(iM);
+                        ItemStack i = new ItemStack(Material.SKULL_ITEM);
+                        i.setDurability((short)3);
+                        SkullMeta iM = (SkullMeta)i.getItemMeta();
+                        iM.setOwner(name);
+                        i.setItemMeta(iM);
 
-                    p.getInventory().addItem(i);
-                    sender.sendMessage(ChatColor.GREEN + "There you go!");
+                        p.getInventory().addItem(i);
+                        sender.sendMessage(ChatColor.GREEN + "There you go!");
+                    } else {
+                        sender.sendMessage(ChatColor.RED + "/" + label + " <name>");
+                    }
                 } else {
-                    sender.sendMessage(ChatColor.RED + "/" + label + " <name>");
+                    sender.sendMessage(ChatColor.RED + "You require the permission " + ChatColor.YELLOW + "playerskulls.cmd.skull" + ChatColor.RED + " in order to execute this command!");
                 }
             } else {
                 sender.sendMessage(ChatColor.RED + "You must be a player in order to execute this command!");
